@@ -1,0 +1,10 @@
+參考https://mnya.tw/cc/word/1480.html
+
+1.在bulid.gradle地dependencies中加入此句implementation fileTree(dir: 'libs', include: ['*.jar']);用於使用lib內jar檔案
+2.下載JDBC的驅動(mysql-connector-java-5.1.48-bin.jar)放到app/libs
+3.在AndroidManifest.xml加入網路權限<uses-permission android:name="android.permission.INTERNET"/>
+4.參照附圖與副檔案
+
+https://www.itread01.com/content/1510978813.html
+
+*資料庫上傳資料-最後上傳一整場
