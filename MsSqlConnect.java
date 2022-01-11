@@ -10,11 +10,15 @@ import java.sql.Statement;
 public class MsSqlConnect {
 
     // 資料庫定義
+    //String mysql_ip = "210.240.163.28";//資料庫的IP
     String mysql_ip = "210.240.170.186";//資料庫的IP
     int mysql_port = 3306; // Port 預設為 3306
+    //String db_name = "car";//資料表
     String db_name = "newdatabase";//資料表
-    String url = "jdbc:mysql://"+mysql_ip+":"+mysql_port+"/"+db_name;//套用JDBC的驅動
+    String url = "jdbc:mysql://"+mysql_ip+":"+mysql_port+"/"+db_name+"?useUnicode=true&characterEncoding=UTF-8";//套用JDBC的驅動
+    //String db_user = "yoyo30618";//資料庫帳號
     String db_user = "lulu";//資料庫帳號
+    //String db_password = "yoyo0516";//資料庫密碼
     String db_password = "nttucsie";//資料庫密碼
 
     public void run() {//初步連線
@@ -60,17 +64,21 @@ public class MsSqlConnect {
         return data;//回傳給呼叫的人
     }
 
-    public void pushData() {//上傳資料的部分
+    public String pushData() {//上傳資料的部分
         try {
             Connection con = DriverManager.getConnection(url, db_user, db_password);//進行一個sql的連線
-            String sql = "INSERT INTO cc(ss, aa, dd, ee) VALUES ('959','99','99','99')";//指定要執行的sql指令(重點修改此處)
+            String test="20220108中文測試";
+            int test2=99;
+            String sql = "INSERT INTO cc(ss, aa, dd, ee) VALUES ('"+test+"','"+test2+"','91234219','99')";//指定要執行的sql指令(重點修改此處)
+            Log.e("DB",sql);
             Statement st = con.createStatement();//建立一個Statement 類似郵差的概念
-            
+
             st.executeUpdate(sql);//新增資料用這個(郵差把指令遞送)**注意與下載不同
             st.close();//關閉郵差
         } catch (SQLException e) {//如果有狀況
             e.printStackTrace();//印出例外原因
         }
+        return "OK";
     }
     /*-------------下方為程式自動產生 用於建置APP用---------------------------*/
 }

@@ -19,14 +19,15 @@ public class MainActivity extends AppCompatActivity {
             public void run(){//執行序執行
                 MsSqlConnect con = new MsSqlConnect();//建立新的連線，使用的是MsSqlConnect裡的方法
                 con.run();
-                final String data = con.getData();//將我們的資料定義為con做getdata回傳的資料
+                //con.pushData();
+                final String data = con.pushData();//將我們的資料定義為con做getdata回傳的資料
 
-                Log.v("OK",data);//設定log 檢查用
-                text_view.post(new Runnable() {//因為是執行序 所以需要這樣寫
-                    public void run() {
-                        text_view.setText(data);//把剛得到的資料設定到UI
-                    }
-                });
+                //Log.v("OK",data);//設定log 檢查用
+                //text_view.post(new Runnable() {//因為是執行序 所以需要這樣寫
+                //    public void run() {
+                //       text_view.setText(data);//把剛得到的資料設定到UI
+                //    }
+                //});
             }
         }).start();
     }
